@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { firebaseApp } from "../App";
-import { getDatabase, ref, onValue, set } from "firebase/database";
+import { getDatabase, ref, onValue, set, update } from "firebase/database";
 
 import Checkbox from "@mui/material/Checkbox";
 import Table from "@mui/material/Table";
@@ -34,8 +34,6 @@ const DogTable = () => {
         });
     }, []);
 
-    feed && console.log(feed, "<<<<");
-
     return (
         <TableContainer component={Paper} style={{ maxHeight: "60vh" }}>
             <Table sx={{ minWidth: 650 }} aria-label="Feed control table" stickyHeader>
@@ -55,16 +53,40 @@ const DogTable = () => {
                         >
                             <TableCell align="left">{feed?.date}</TableCell>
                             <TableCell align="center">
-                                <Checkbox checked={feed?.bidu[0]} />
-                                <Checkbox checked={feed?.bidu[1]} />
+                                <Checkbox checked={feed?.bidu[0]} onChange={
+                                    () => update(feedRef, { 
+                                        bidu: [!feed?.bidu[0], feed?.bidu[1]]
+                                    })
+                                }/>
+                                <Checkbox checked={feed?.bidu[1]} onChange={
+                                    () => update(feedRef, { 
+                                        bidu: [feed?.bidu[0], !feed?.bidu[1]]
+                                    })
+                                }/>
                             </TableCell>
                             <TableCell align="center">
-                                <Checkbox checked={feed?.dingo[0]} />
-                                <Checkbox checked={feed?.dingo[1]} />
+                                <Checkbox checked={feed?.dingo[0]} onChange={
+                                    () => update(feedRef, { 
+                                        dingo: [!feed?.dingo[0], feed?.dingo[1]]
+                                    })
+                                }/>
+                                <Checkbox checked={feed?.dingo[1]} onChange={
+                                    () => update(feedRef, { 
+                                        dingo: [feed?.dingo[0], !feed?.dingo[1]]
+                                    })
+                                }/>
                             </TableCell>
                             <TableCell align="center">
-                                <Checkbox checked={feed?.feijaozinho[0]} />
-                                <Checkbox checked={feed?.feijaozinho[1]} />
+                                <Checkbox checked={feed?.feijaozinho[0]} onChange={
+                                    () => update(feedRef, { 
+                                        feijaozinho: [!feed?.feijaozinho[0], feed?.feijaozinho[1]]
+                                    })
+                                }/>
+                                <Checkbox checked={feed?.feijaozinho[1]} onChange={
+                                    () => update(feedRef, { 
+                                        feijaozinho: [feed?.feijaozinho[0], !feed?.feijaozinho[1]]
+                                    })
+                                }/>
                             </TableCell>
                         </TableRow>
                     : undefined
