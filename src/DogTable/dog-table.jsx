@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,19 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Checkbox } from "@mui/material";
-
-function createData(date, bidu, dingo, feijaozinho) {
-    return { date, bidu, dingo, feijaozinho };
-}
-
-const rows = [
-    createData(
-        new Date().toDateString(),
-        <Checkbox checked />, 
-        <Checkbox checked />,
-        <Checkbox checked />,
-    ),
-];
+const data = require('../../data.json');
 
 const DogTable = () => {
     return (
@@ -34,15 +22,15 @@ const DogTable = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {rows.map((row) => (
+                    {data.rows?.map((row) => (
                         <TableRow
-                            key={row.name}
+                            key={row.date}
                             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                         >
                             <TableCell align="left">{row.date}</TableCell>
-                            <TableCell align="center">{row.bidu}</TableCell>
-                            <TableCell align="center">{row.dingo}</TableCell>
-                            <TableCell align="center">{row.feijaozinho}</TableCell>
+                            <TableCell align="center"><Checkbox checked={row.bidu[0]} /><Checkbox checked={row.bidu[1]} /></TableCell>
+                            <TableCell align="center"><Checkbox checked={row.dingo[0]} /><Checkbox checked={row.dingo[1]} /></TableCell>
+                            <TableCell align="center"><Checkbox checked={row.feijaozinho[0]} /><Checkbox checked={row.feijaozinho[1]} /></TableCell>
                         </TableRow>
                     ))}
                 </TableBody>
