@@ -13,26 +13,28 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 const DogTable = () => {    
-    const rowsRef = ref(getDatabase(firebaseApp), "/rows");
-    const [rows, setRows ] = useState([]);
+    const feedRef = ref(getDatabase(firebaseApp), "/feed");
+    const [feed, setFeed] = useState({});
     
     // If today's row is present set rows datat to ui state
     // If not today's row, create it and initialize all false
     useEffect(() => {
-        onValue(rowsRef, (snapshot) => {
+        onValue(feedRef, (snapshot) => {
             const data = snapshot.val();
-            if(data[0].date === new Date().toDateString()) {
-                setRows(data);
+            if(data.date === new Date().toDateString()) {
+                setFeed(data);
             } else {
-                set(rowsRef, [{
+                set(feedRef, {
                     date: new Date().toDateString(),
                     bidu: [false, false],
                     dingo: [false, false],
                     feijaozinho: [false, false],
-                }]);
+                });
             }
         });
     }, []);
+
+    feed && console.log(feed, "<<<<");
 
     return (
         <TableContainer component={Paper} style={{ maxHeight: "60vh" }}>
@@ -46,15 +48,27 @@ const DogTable = () => {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow
-                        key={rows[0]?.date}
-                        sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                    >
-                        <TableCell align="left">{rows[0]?.date}</TableCell>
-                        <TableCell align="center"><Checkbox checked={rows[0]?.bidu[0]} /><Checkbox checked={rows[0]?.bidu[1]} /></TableCell>
-                        <TableCell align="center"><Checkbox checked={rows[0]?.dingo[0]} /><Checkbox checked={rows[0]?.dingo[1]} /></TableCell>
-                        <TableCell align="center"><Checkbox checked={rows[0]?.feijaozinho[0]} /><Checkbox checked={rows[0]?.feijaozinho[1]} /></TableCell>
-                    </TableRow>
+                    {(feed && feed.date) ?
+                        <TableRow
+                            key={feed?.date}
+                            sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                        >
+                            <TableCell align="left">{feed?.date}</TableCell>
+                            <TableCell align="center">
+                                <Checkbox checked={feed?.bidu[0]} />
+                                <Checkbox checked={feed?.bidu[1]} />
+                            </TableCell>
+                            <TableCell align="center">
+                                <Checkbox checked={feed?.dingo[0]} />
+                                <Checkbox checked={feed?.dingo[1]} />
+                            </TableCell>
+                            <TableCell align="center">
+                                <Checkbox checked={feed?.feijaozinho[0]} />
+                                <Checkbox checked={feed?.feijaozinho[1]} />
+                            </TableCell>
+                        </TableRow>
+                    : undefined
+                    }
                 </TableBody>
             </Table>
         </TableContainer>
