@@ -4,11 +4,8 @@ import Header from "./Header/header";
 import DogTable from "./DogTable/dog-table";
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref } from "firebase/database";
 import { firebaseConfig } from "../firebase.config";
-
-const app = initializeApp(firebaseConfig);
-export const dbRef = ref(getDatabase(app));
+export const firebaseApp = initializeApp(firebaseConfig);
 
 const App = () => ( 
     <Container>
