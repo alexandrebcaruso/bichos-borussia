@@ -34,6 +34,14 @@ const DogTable = () => {
         });
     }, []);
 
+    const updateFeed = (dog) => {
+        if(confirm("Alterar o status?")) {
+            update(feedRef, dog);
+        } else {
+            return;
+        }
+    };
+
     return (
         <TableContainer component={Paper} style={{ maxHeight: "60vh" }}>
             <Table sx={{ minWidth: 650 }} aria-label="Feed control table" stickyHeader>
@@ -53,39 +61,27 @@ const DogTable = () => {
                         >
                             <TableCell align="left">{feed?.date}</TableCell>
                             <TableCell align="center">
-                                <Checkbox checked={feed?.bidu[0]} onChange={
-                                    () => update(feedRef, { 
-                                        bidu: [!feed?.bidu[0], feed?.bidu[1]]
-                                    })
+                                <Checkbox checked={feed.bidu[0]} onChange={
+                                    () => updateFeed({bidu: [!feed.bidu[0], feed.bidu[1]]})
                                 }/>
-                                <Checkbox checked={feed?.bidu[1]} onChange={
-                                    () => update(feedRef, { 
-                                        bidu: [feed?.bidu[0], !feed?.bidu[1]]
-                                    })
+                                <Checkbox checked={feed.bidu[1]} onChange={
+                                    () => updateFeed({bidu: [feed.bidu[0], !feed.bidu[1]]})
                                 }/>
                             </TableCell>
                             <TableCell align="center">
-                                <Checkbox checked={feed?.dingo[0]} onChange={
-                                    () => update(feedRef, { 
-                                        dingo: [!feed?.dingo[0], feed?.dingo[1]]
-                                    })
+                                <Checkbox checked={feed.dingo[0]} onChange={
+                                    () => updateFeed({dingo: [!feed.dingo[0], feed.dingo[1]]})
                                 }/>
-                                <Checkbox checked={feed?.dingo[1]} onChange={
-                                    () => update(feedRef, { 
-                                        dingo: [feed?.dingo[0], !feed?.dingo[1]]
-                                    })
+                                <Checkbox checked={feed.dingo[1]} onChange={
+                                    () => updateFeed({dingo: [feed.dingo[0], !feed.dingo[1]]})
                                 }/>
                             </TableCell>
                             <TableCell align="center">
-                                <Checkbox checked={feed?.feijaozinho[0]} onChange={
-                                    () => update(feedRef, { 
-                                        feijaozinho: [!feed?.feijaozinho[0], feed?.feijaozinho[1]]
-                                    })
+                                <Checkbox checked={feed.feijaozinho[0]} onChange={
+                                    () => updateFeed({feijaozinho: [!feed.feijaozinho[0], feed.feijaozinho[1]]})
                                 }/>
-                                <Checkbox checked={feed?.feijaozinho[1]} onChange={
-                                    () => update(feedRef, { 
-                                        feijaozinho: [feed?.feijaozinho[0], !feed?.feijaozinho[1]]
-                                    })
+                                <Checkbox checked={feed.feijaozinho[1]} onChange={
+                                    () => updateFeed({feijaozinho: [feed.feijaozinho[0], !feed.feijaozinho[1]]})
                                 }/>
                             </TableCell>
                         </TableRow>
