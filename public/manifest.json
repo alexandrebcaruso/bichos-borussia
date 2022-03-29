@@ -1,0 +1,21 @@
+{
+    "name": "Bichos da Borussia",
+    "short_name": "bichos",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#FFFFFF",
+    "description": "App para ajudar a gerenciar a alimentação dos Bichos da Borussia.",
+    "theme_color": "#FFFFFF",
+    "icons": [
+        {
+            "src": "./icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
