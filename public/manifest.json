@@ -1,7 +1,7 @@
 {
     "name": "Bichos da Borussia",
     "short_name": "bichos",
-    "start_url": "/",
+    "start_url": "/bichos-borussia/",
     "display": "standalone",
     "background_color": "#FFFFFF",
     "description": "App para ajudar a gerenciar a alimentação dos Bichos da Borussia.",
