@@ -9,6 +9,5 @@ module.exports = merge(common, {
         static: {
             directory: path.join(__dirname, 'public'),
         },
-        hot: 'only'
     },
 });
