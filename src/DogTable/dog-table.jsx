@@ -37,7 +37,7 @@ const DogTable = () => {
     const updateFeed = async (dog) => {
         if(confirm("Alterar o status?")) {
             await update(feedRef, dog);
-            console.log(`Status do ${Object.keys(dog)[0]} alterado com sucesso!`);
+            console.info(`Status do ${Object.keys(dog)[0]} alterado com sucesso!`);
         } else {
             return;
         }
