@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open --hot only --config webpack.dev.js",
+    "start": "webpack serve --open --config webpack.dev.js",
     "prebuild": "rimraf dist",
     "build": "webpack --config webpack.prod.js"
   },
@@ -17,8 +17,8 @@
     "@emotion/styled": "^11.6.0",
     "@mui/material": "^5.2.6",
     "firebase": "^9.6.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",

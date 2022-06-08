@@ -1,10 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./App";
 
-if (module.hot) module.hot.accept();
+// enable new features in React 18
+const root = createRoot(document.getElementById("root"));
+root.render(<App />);
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+// hmr config
+if(module.hot) {
+    module.hot.accept("./App", function() {
+        root.render(<App />);
+    });
+}
 
 const registerServiceWorker = () => {
     if ('serviceWorker' in navigator) {
