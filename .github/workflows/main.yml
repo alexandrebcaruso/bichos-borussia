@@ -17,5 +17,5 @@ jobs:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USER }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /domains/acaruso.com.br/public_html/bichos-borussia/
+        server-dir: /public_html/www.acaruso.com.br/bichos-borussia/
         local-dir: dist/
