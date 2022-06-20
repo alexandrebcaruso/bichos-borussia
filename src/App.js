@@ -2,7 +2,6 @@ import React from "react";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../firebase.config";
 
-import Container from "@mui/material/Container";
 import Header from "./Header/header";
 import DogList from "./DogList/dog-list";
 
