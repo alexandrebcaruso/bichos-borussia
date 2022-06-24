@@ -12,6 +12,8 @@
         "sourceType": "module"
     },
     "rules": {
+        "react/jsx-uses-react": "off",
+        "react/react-in-jsx-scope": "off",
         "sort-imports": "off",
         "one-var": "off",
         "namedComponents": "arrow-function"
