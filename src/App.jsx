@@ -8,6 +8,7 @@ export const firebaseApp = initializeApp(firebaseConfig);
 const App = () => (
     <div data-testid="app">
         <Header />
+        
         <DogList />
     </div>
 );
