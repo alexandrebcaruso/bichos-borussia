@@ -2,7 +2,7 @@
   "name": "bichos-borussia",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "test": "jest",
     "start": "webpack serve --open --config webpack.dev.js",

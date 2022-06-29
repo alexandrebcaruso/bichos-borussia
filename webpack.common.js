@@ -4,7 +4,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
-        app: './src/index.js',
+        app: './src/index.jsx',
     },
     resolve: {
         extensions: [".js", ".jsx"]
