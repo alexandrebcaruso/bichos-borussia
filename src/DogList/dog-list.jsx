@@ -1,10 +1,21 @@
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { firebaseApp } from "../App";
-import { getDatabase, ref, onValue, update, get, child } from "firebase/database";
-import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import { Box, FormControl, FormGroup, FormLabel } from "@mui/material";
-import Snackbar from "@mui/material/Snackbar";
+import { 
+    getDatabase, 
+    ref, 
+    onValue, 
+    update, 
+    get, 
+    child } from "firebase/database";
+import { 
+    Box, 
+    Checkbox,
+    FormControlLabel,
+    FormLabel,
+    FormGroup,
+    FormControl,
+    LinearProgress,
+    Snackbar } from "@mui/material";
 
 const initialState = {
     date: new Date().toDateString(),
@@ -30,6 +41,7 @@ const DogList = () => {
     const [date, setDate] = useState(initialState.date);
     const [dogs, setDogs] = useState(initialState.dogs);
     const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     // get and add listener to db dogs object
     onValue(dogsRef, (snapshot) => {
@@ -49,6 +61,12 @@ const DogList = () => {
                     update(dogsRef, initialState.dogs);
                 }
             })
+            .then(() => {
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.error(err)
+            });
     }, []);
 
     const handleChange = (e) => {
@@ -66,7 +84,8 @@ const DogList = () => {
         setSnackbarOpen(true);
     };
 
-    return (
+    return loading ? <LinearProgress />
+    : (
         <Box sx={{ display: 'flex' }}>
             <FormControl sx={{ m: 2 }} component="fieldset" variant="standard">
                 <FormLabel component="legend">Bidu</FormLabel>
@@ -129,7 +148,7 @@ const DogList = () => {
                 onClose={() => setSnackbarOpen(false)}
             />
         </Box>
-    );
+    ); 
 }
 
 export default DogList;
